@@ -1,8 +1,12 @@
 import os
 import sys
 
-import corenlp
+try:
+    import corenlp
+except:
+    pass
 import requests
+from vncorenlp import VnCoreNLP
 
 
 class CoreNLP:
@@ -26,8 +30,7 @@ class CoreNLP:
     def annotate(self, text, annotators=None, output_format=None, properties=None):
         try:
             result = self.client.annotate(text, annotators, output_format, properties)
-        except (corenlp.client.PermanentlyFailedException,
-                requests.exceptions.ConnectionError) as e:
+        except (corenlp.client.PermanentlyFailedException, requests.exceptions.ConnectionError) as e:
             print('\nWARNING: CoreNLP connection timeout. Recreating the server...', file=sys.stderr)
             self.client.stop()
             self.client.start()
@@ -39,8 +42,25 @@ class CoreNLP:
 _singleton = None
 
 
-def annotate(text, annotators=None, output_format=None, properties=None):
+def annotate(text, lang = 'vi', annotators = None, output_format = None, properties = None):
     global _singleton
     if not _singleton:
-        _singleton = CoreNLP()
+        if lang == 'vi':
+            _singleton = VnCoreNLP()
+        else:
+            _singleton = CoreNLP()
     return _singleton.annotate(text, annotators, output_format, properties)
+
+
+class vnCoreNLP:
+
+    def __init__(self, path = '/Absolute-path-to/vncorenlp/VnCoreNLP-1.1.1.jar'):
+
+        self.model = VnCoreNLP(path, annotators="wseg", max_heap_size='-Xmx500m')
+
+    def annotate(self, text, annotators = None, output_format = "string", properties = None):
+        
+        sentences = self.model.tokenizer(text)
+        if output_format == "string":
+            return " ".join([s for s in sentences])
+        return sentences

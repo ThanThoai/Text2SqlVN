@@ -10,6 +10,8 @@ import torchtext
 
 from ratsql.resources import corenlp
 from ratsql.utils import registry
+from fairseq.data.encoders.fastbpe import fastBPE
+from fairseq.models.roberta import RobertaModel
 
 
 class Embedder(metaclass=abc.ABCMeta):
@@ -112,3 +114,27 @@ class BPEmb(Embedder):
 
     def to(self, device):
         self.vectors = self.vectors.to(device)
+
+
+# class BPE():
+#     bpe_codes = "PhoBERT_base_fairseq/bpe.codes"
+
+# args = BPE()
+
+# @registry.register("word_emb", "vi_bpe")
+# class BPEVi(Embedder):
+#     def __init__(self, dim, vocab_size, lang='vi'):
+#         self.BertVi = RobertaModel.from_pretrained('PhoBERT_base_fairseq', checkpoint_file='model.pt')
+#         self.BertVi.bpe = fastBPE(args)
+#         self.dim = dim
+
+#         self.vectors = torch.from_numpy(self.BertVi.bpe.vectors)
+    
+#     def tokenize(self, text):
+#         return self.BertVi.encode(text)
+    
+#     def untokenize(self, tokens):
+#         return self.BertVi.decode(tokens)
+
+#     def lookup(self, token):
+
