@@ -2,7 +2,7 @@ import abc
 import functools
 import os
 import time
-from typing import Dict
+from typing import Dict, List
 import bpemb
 import corenlp
 import torch
@@ -13,6 +13,9 @@ from ratsql.utils import registry
 from fairseq.data.encoders.fastbpe import fastBPE
 from fairseq.models.roberta import RobertaModel
 from vncorenlp import VNCoreNLP
+import tqdm
+
+
 
 class Embedder(metaclass=abc.ABCMeta):
 
@@ -142,7 +145,7 @@ class BPE_LARGE():
 @registry.register("word_emb", "phoBert")
 class phoBert(Embedder):
     
-    def __init__(self, BERT_MODEL, write_file = True):
+    def __init__(self, BERT_MODEL):
         
         self.method = BERT_MODEL
         self.dict_model = {
@@ -167,7 +170,6 @@ class phoBert(Embedder):
             args = BPE_LARGE()
         self.pho_bert.bpe = fastBPE(args)
         self.embeding = {}
-        self.write_file = write_file
 
     def run(self, data : List[Dict]) -> None:
         print(datetime.now().strftime("%H:%M:%S"), f"\t INFO: Extract Features using BERT: {self.method}")
@@ -186,7 +188,6 @@ class phoBert(Embedder):
         
         if self.write_file:
             path = "./dataset/text/extract_bert"
-            print(datetime.now().strftime("%H:%M:%S"), f"\t INFO: Saving extract features to file")
             torch.save(self.embeding, os.path.join(path, self.method + '.pt'))
 
 
