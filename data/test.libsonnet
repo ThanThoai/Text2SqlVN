@@ -43,7 +43,7 @@ function(prefix) {
     'workshop_paper',
     'yelp'
   ]
-  name: 'text2sqlvi',
+  name: 'texttosqlvi',
  paths: [
   prefix + 'database/%s/examples.json' % [db]
   for db in databases

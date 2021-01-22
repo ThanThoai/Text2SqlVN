@@ -100,7 +100,7 @@ function(prefix) {
     'world_1',
     'wrestler'
   ]
-  name: 'text2sqlvi',
+  name: 'texttosqlvi',
  paths: [
   prefix + 'database/%s/examples.json' % [db]
   for db in databases
