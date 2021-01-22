@@ -65,9 +65,10 @@ def instantiate(callable, config, unused_keys=(), **kwargs):
             inspect.Parameter.POSITIONAL_ONLY,
             inspect.Parameter.VAR_POSITIONAL,
         ):
-            raise ValueError(
-                "Unsupported kind for param {}: {}".format(name, param.kind)
-            )
+            # raise ValueError(
+            #     "Unsupported kind for param {}: {}".format(name, param.kind)
+            # )
+            signature.parameters.pop(name)
 
     if any(
         param.kind == inspect.Parameter.VAR_KEYWORD
