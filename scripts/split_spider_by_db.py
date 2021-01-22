@@ -10,7 +10,7 @@ def write_libsonnet(split_name, list : List) -> None:
     def strings(s, tab = "") -> str:
         return tab + s  + "\n"
     with open(os.path.join("./data", split_name + '.libsonnet'), 'w') as wr:
-        wr.write(strings("local databases = ["))
+        wr.write(strings("function(prefix) {"))
         wr.write(strings(s = "local databases = [", tab = '   '))
         for l in list:
             wr.write(strings(s = "'" + str(l) +"'", tab='    '))

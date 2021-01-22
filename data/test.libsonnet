@@ -1,4 +1,4 @@
-local databases = [
+function(prefix) {
    local databases = [
     'assets_maintenance'
     'book_2'
