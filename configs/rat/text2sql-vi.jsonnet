@@ -13,7 +13,7 @@
         encoder: {
             initial_encoder: {
                 name: 'Bert',
-                pretrained_model_name_or_path: 'phobert-base',
+                pretrained_model_name_or_path: 'vinai/phobert-base',
                 trainable: true,
                 num_return_layers: 1,
                 embed_dim: 256,
@@ -50,7 +50,7 @@
         preproc+: {
             save_path: 'data/result_phobert',
             name: 'BertDuoRAT',
-            pretrained_model_name_or_path: 'phobert-base',
+            pretrained_model_name_or_path: 'vinai/phobert-base',
             add_cls_token: true,
             add_sep_token: false,
 
@@ -59,7 +59,7 @@
 
             tokenizer: {
                 name: 'BERTTokenizer',
-                pretrained_model_name_or_path: 'phobert-base',
+                pretrained_model_name_or_path: 'vinai/phobert-base',
             },
         },
     },
