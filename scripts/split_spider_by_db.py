@@ -39,7 +39,7 @@ def main(spider_path, duorat_path) -> None:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--spider-path", type=str, default='datataset/data')
+    parser.add_argument("--spider-path", type=str, default='dataset/data')
     parser.add_argument("--duorat-path", type=str, default='dataset/database')
     args = parser.parse_args()
 
