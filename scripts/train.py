@@ -508,6 +508,7 @@ def main(
     else:
         logger.log("Running preprocessing...")
         sections = config["data"].keys()
+        print(sections)
         keep_vocab = False
         preprocessor = Preprocessor(config)
         preprocessor.preprocess(sections, keep_vocab)
