@@ -1,4 +1,4 @@
-function(output_from, data_path='data/', save_dir='model/') {
+function(output_from, data_path='data/', save_dir='duorat/') {
     local PREFIX = data_path,
 
     data: {
@@ -89,7 +89,7 @@ function(output_from, data_path='data/', save_dir='model/') {
             },
             transition_system: {
                 name: 'SpiderTransitionSystem',
-                asdl_grammar_path: 'model/asdl/lang/spider/spider_asdl.txt',
+                asdl_grammar_path: 'duorat/asdl/lang/spider/spider_asdl.txt',
                 tokenizer: {
                     name: 'VnCoreNLP',
                 },
