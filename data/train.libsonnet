@@ -1,5 +1,5 @@
 function(prefix) {
-  local databases = [
+   local databases = [
     'department_management',
     'farm',
     'student_assessment',

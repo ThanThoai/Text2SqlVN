@@ -1,13 +1,14 @@
-function(output_from, data_path='data/', save_dir='duorat/') {
+function(output_from, data_path='data/', save_dir='model/') {
     local PREFIX = data_path,
 
     data: {
         train: (import '../../data/train.libsonnet')(prefix=PREFIX),
-        val: (import '../../data/val.libsonnet')(prefix=PREFIX),
+        dev: (import '../../data/dev.libsonnet')(prefix=PREFIX),
+        test: (import '../../data/test.libsonnet')(prefix=PREFIX),
     },
 
     model: {
-        name: 'DuoRAT',
+        name: 'RATSQL',
         encoder: {
             initial_encoder: {
                 name: 'Transformer',
@@ -84,13 +85,13 @@ function(output_from, data_path='data/', save_dir='duorat/') {
             val_num_schema_shuffles: 0,
             save_path: PREFIX + save_dir,
             tokenizer: {
-                name: 'CoreNLPTokenizer',
+                name: 'VnCoreNLP',
             },
             transition_system: {
                 name: 'SpiderTransitionSystem',
-                asdl_grammar_path: 'duorat/asdl/lang/spider/spider_asdl.txt',
+                asdl_grammar_path: 'model/asdl/lang/spider/spider_asdl.txt',
                 tokenizer: {
-                    name: 'CoreNLPTokenizer',
+                    name: 'VnCoreNLP',
                 },
                 output_from: output_from,
                 use_table_pointer: output_from,
@@ -100,7 +101,7 @@ function(output_from, data_path='data/', save_dir='duorat/') {
             schema_linker: {
                 name: 'SpiderSchemaLinker',
                 tokenizer: {
-                    name: 'CoreNLPTokenizer',
+                    name: 'VnCoreNLP',
                 },
                 max_n_gram: 5,
                 with_stemming: false,
