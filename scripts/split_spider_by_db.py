@@ -15,7 +15,7 @@ def write_libsonnet(split_name, list : List) -> None:
         for l in list:
             wr.writelines(strings(s = "'" + str(l) +"''", tab='    '))
         wr.writelines(strings(s = "]", tab="  "))
-        wr.writelines(string(s = "name: 'text2sqlvi',", tab="  "))
+        wr.writelines(strings(s = "name: 'text2sqlvi',", tab="  "))
         wr.writelines(strings(s = "paths: [", tab=" "))
         wr.writelines(strings(s = "prefix + 'database/%s/examples.json' % [db]", tab="  "))
         wr.writelines(strings(s = "for db in databases", tab="  "))
