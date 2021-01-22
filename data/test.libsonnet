@@ -42,7 +42,7 @@ function(prefix) {
     'student_assessment',
     'workshop_paper',
     'yelp'
-  ]
+  ],
   name: 'texttosqlvi',
  paths: [
   prefix + 'database/%s/examples.json' % [db]

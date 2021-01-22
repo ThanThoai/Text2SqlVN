@@ -99,7 +99,7 @@ function(prefix) {
     'wine_1',
     'world_1',
     'wrestler'
-  ]
+    ],
   name: 'texttosqlvi',
  paths: [
   prefix + 'database/%s/examples.json' % [db]
