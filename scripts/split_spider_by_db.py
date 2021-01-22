@@ -8,24 +8,24 @@ import tqdm
 
 def write_libsonnet(split_name, list : List) -> None:
     def strings(s, tab = "") -> str:
-        return tab + s
+        return tab + s  + "\n"
     with open(os.path.join("./data", split_name + '.libsonnet'), 'w') as wr:
-        wr.writelines(strings("local databases = ["))
-        wr.writelines(strings(s = "local databases = [", tab = '   '))
+        wr.write(strings("local databases = ["))
+        wr.write(strings(s = "local databases = [", tab = '   '))
         for l in list:
-            wr.writelines(strings(s = "'" + str(l) +"''", tab='    '))
-        wr.writelines(strings(s = "]", tab="  "))
-        wr.writelines(strings(s = "name: 'text2sqlvi',", tab="  "))
-        wr.writelines(strings(s = "paths: [", tab=" "))
-        wr.writelines(strings(s = "prefix + 'database/%s/examples.json' % [db]", tab="  "))
-        wr.writelines(strings(s = "for db in databases", tab="  "))
-        wr.writelines(strings(s = "],", tab=" "))
-        wr.writelines(strings(s = "tables_paths: [", tab=" "))
-        wr.writelines(strings(s = "prefix + 'database/%s/tables.json' % [db]", tab="  "))
-        wr.writelines(strings(s = "for db in databases", tab="  "))
-        wr.writelines(strings(s = "],", tab=" "))
-        wr.writelines(strings(s = "db_path: prefix + 'database'", tab=" "))
-        wr.writelines(strings(s = "}", tab=""))
+            wr.write(strings(s = "'" + str(l) +"''", tab='    '))
+        wr.write(strings(s = "]", tab="  "))
+        wr.write(strings(s = "name: 'text2sqlvi',", tab="  "))
+        wr.write(strings(s = "paths: [", tab=" "))
+        wr.write(strings(s = "prefix + 'database/%s/examples.json' % [db]", tab="  "))
+        wr.write(strings(s = "for db in databases", tab="  "))
+        wr.write(strings(s = "],", tab=" "))
+        wr.write(strings(s = "tables_paths: [", tab=" "))
+        wr.write(strings(s = "prefix + 'database/%s/tables.json' % [db]", tab="  "))
+        wr.write(strings(s = "for db in databases", tab="  "))
+        wr.write(strings(s = "],", tab=" "))
+        wr.write(strings(s = "db_path: prefix + 'database'", tab=" "))
+        wr.write(strings(s = "}", tab=""))
 
 
 def main(spider_path, duorat_path) -> None:
