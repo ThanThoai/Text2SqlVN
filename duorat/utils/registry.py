@@ -45,7 +45,7 @@ def register(kind, name):
 def lookup(kind, name):
     if isinstance(name, collections.abc.Mapping):
         name = name["name"]
-    print(_REGISTRY)
+    # print(_REGISTRY)
 
     if kind not in _REGISTRY:
         raise KeyError('Nothing registered under "{}"'.format(kind))
@@ -60,7 +60,7 @@ def instantiate(callable, config, unused_keys=(), **kwargs):
     merged = {**config, **kwargs}
     signature = inspect.signature(callable)
     for name, param in signature.parameters.items():
-        print(name, param)
+        print(name, param.kind)
         if param.kind in (
             inspect.Parameter.POSITIONAL_ONLY,
             inspect.Parameter.VAR_POSITIONAL,
