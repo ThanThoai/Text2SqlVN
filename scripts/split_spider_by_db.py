@@ -8,9 +8,8 @@ from typing import List, Dict
 
 def main(spider_path, duorat_path) -> None:
     tables_json_path = "tables.json"
-    examples_paths = ["train_spider.json", "train_others.json", "dev.json"]
+    examples_paths = ["train.json", "dev.json", "test.json"]
 
-    ### 1. Produce tables.json files
     with open(os.path.join(spider_path, tables_json_path), "r") as read_fp:
         payload: List[dict] = json.load(read_fp)
 
@@ -24,7 +23,6 @@ def main(spider_path, duorat_path) -> None:
         with open(os.path.join(duorat_path, db_id, "tables.json"), "wt") as write_fp:
             json.dump([item], write_fp, indent=2)
 
-    ### 2. Produce examples.json files
     for examples_path in examples_paths:
         with open(os.path.join(spider_path, examples_path), "r") as read_fp:
             payload: List[dict] = json.load(read_fp)
@@ -41,8 +39,8 @@ def main(spider_path, duorat_path) -> None:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--spider-path", type=str, default='data/spider')
-    parser.add_argument("--duorat-path", type=str, default='data/database')
+    parser.add_argument("--spider-path", type=str, default='datataset/data')
+    parser.add_argument("--duorat-path", type=str, default='dataset/database')
     args = parser.parse_args()
 
     main(args.spider_path, args.duorat_path)
