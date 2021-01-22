@@ -10,6 +10,8 @@ from typing import Optional
 
 import _jsonnet
 import torch
+import sys
+sys.path.insert(1, os.getcwd())
 
 from duorat.asdl.asdl_ast import AbstractSyntaxTree
 from duorat.datasets.spider import (

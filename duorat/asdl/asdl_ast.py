@@ -2,7 +2,9 @@
 from dataclasses import dataclass, replace
 from typing import Tuple, Optional, Union
 from io import StringIO
-
+import sys
+import os
+sys.path.insert(1, os.getcwd())
 from duorat.asdl.asdl import ASDLProduction, Field, ASDLType, ASDLCompositeType
 
 

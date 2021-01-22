@@ -1,5 +1,9 @@
 # coding=utf-8
 from dataclasses import dataclass
+
+import sys
+import os
+sys.path.insert(1, os.getcwd())
 from typing import (
     Generator,
     Tuple,

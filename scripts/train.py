@@ -33,7 +33,6 @@ from typing import Type, List
 import _jsonnet
 import torch
 import numpy as np
-import sys
 
 import sys
 sys.path.insert(1, os.getcwd())

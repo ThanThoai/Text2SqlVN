@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(1, os.getcwd())
+
 from copy import deepcopy, copy
 from dataclasses import dataclass, field
 from typing import Iterator, Optional, Sequence, Iterable

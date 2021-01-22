@@ -1,6 +1,10 @@
 # lm_duorat
 # Raymond Li, 2020-08-31
 # Copyright (c) 2020 Element AI Inc. All rights reserved.
+import sys
+import os
+sys.path.insert(1, os.getcwd())
+
 import logging
 from typing import List, Tuple
 

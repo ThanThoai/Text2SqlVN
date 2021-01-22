@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(1, os.getcwd())
+
 from typing import Tuple, Callable, Optional
 
 import torch

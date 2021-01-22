@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(1, os.getcwd())
+
 from dataclasses import dataclass, replace
 
 import torch

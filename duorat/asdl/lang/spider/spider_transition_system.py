@@ -5,6 +5,10 @@ from dataclasses import dataclass
 from functools import total_ordering
 from typing import List, Generator, Tuple, Union, Optional, Type, Dict
 
+import sys
+import os
+sys.path.insert(1, os.getcwd())
+
 from duorat.utils import registry
 from .spider import SpiderGrammar
 from ...asdl import (

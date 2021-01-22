@@ -1,6 +1,9 @@
 from dataclasses import dataclass
 from typing import Optional
 
+import sys
+import os
+sys.path.insert(1, os.getcwd())
 from duorat.asdl.asdl import Field
 from duorat.asdl.transition_system import Pos, Action
 

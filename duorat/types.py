@@ -3,6 +3,8 @@ from copy import deepcopy, copy
 from enum import Enum, auto
 from uuid import UUID
 
+import sys
+sys.path.insert(1, os.getcwd())
 from dataclasses import dataclass, field
 from typing import (
     Tuple,

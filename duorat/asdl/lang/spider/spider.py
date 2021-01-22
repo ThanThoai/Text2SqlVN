@@ -28,6 +28,10 @@ import asdl
 import attr
 import networkx as nx
 
+import sys
+import os
+sys.path.insert(1, os.getcwd())
+
 from duorat.asdl.lang.spider import ast_util
 from duorat.datasets.spider import SpiderSchema
 
