@@ -4,7 +4,6 @@ function(output_from, data_path='data/', save_dir='duorat/') {
     data: {
         train: (import '../../data/train.libsonnet')(prefix=PREFIX),
         dev: (import '../../data/dev.libsonnet')(prefix=PREFIX),
-        test: (import '../../data/test.libsonnet')(prefix=PREFIX),
     },
 
     model: {
