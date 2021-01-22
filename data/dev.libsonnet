@@ -26,7 +26,7 @@ function(prefix) {
     'voter_1',
     'wta_1'
   ],
-  name: 'texttosqlvi',
+  name: 'spider',
  paths: [
   prefix + 'database/%s/examples.json' % [db]
   for db in databases
