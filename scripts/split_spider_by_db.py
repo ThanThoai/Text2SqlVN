@@ -7,6 +7,11 @@ from typing import List, Dict
 
 
 def main(spider_path, duorat_path) -> None:
+
+    def mkdir_p(path):
+        if not os.path.isdir(path):
+            os.mkdir(path)
+
     tables_json_path = "tables.json"
     examples_paths = ["train.json", "dev.json", "test.json"]
 
@@ -20,6 +25,7 @@ def main(spider_path, duorat_path) -> None:
         grouped_payload[db_id] = item
 
     for db_id, item in grouped_payload.items():
+        mkdir_p(os.path.join(dourat_path, db_id))
         with open(os.path.join(duorat_path, db_id, "tables.json"), "wt") as write_fp:
             json.dump([item], write_fp, indent=2)
 
@@ -33,6 +39,7 @@ def main(spider_path, duorat_path) -> None:
             grouped_payload[db_id].append(item)
 
         for db_id, payload_group in grouped_payload.items():
+            mkdir_p(os.path.join(dourat_path, db_id))
             with open(os.path.join(duorat_path, db_id, "examples.json"), "wt") as write_fp:
                 json.dump(payload_group, write_fp, indent=2)
 
