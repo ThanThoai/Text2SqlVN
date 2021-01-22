@@ -1,2 +1,5 @@
-huggingface
+transformers
 jsonnet
+stanza
+pydantic
+vncorenlp

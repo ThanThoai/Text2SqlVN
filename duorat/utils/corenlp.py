@@ -24,7 +24,7 @@
 import os
 import sys
 
-import corenlp
+from vncorenlp import VnCoreNLP
 import requests
 
 
@@ -69,11 +69,24 @@ class CoreNLP:
         return result
 
 
+class VNCoreNLP(object):
+
+    def __init__(self, vncorenlp_file = "./vncorenlp/VnCoreNLP-1.1.1.jar"):
+
+        self.vncorenlp_file = vncorenlp_file
+
+    def annotate(self, text, annotators= "wseg", output_format=None, properties=None, max_heap_size = "-Xmx500m"):
+        with VnCoreNLP(self.vncorenlp_file, annotators = annotators, max_heap_size = max_heap_size) as vncorenlp:
+            result = vncorenlp.tokenize(text)
+        return result
+
+
+
 _singleton = None
 
 
 def annotate(text, annotators=None, output_format=None, properties=None):
     global _singleton
     if not _singleton:
-        _singleton = CoreNLP()
+        _singleton = VNCoreNLP()
     return _singleton.annotate(text, annotators, output_format, properties)
