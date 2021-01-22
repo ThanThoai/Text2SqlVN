@@ -498,7 +498,7 @@ def main(
     reopen_to_flush = config.get("log", {}).get("reopen_to_flush")
     logger = Logger(os.path.join(args.logdir, "log.txt"), reopen_to_flush)
     logger.log("Logging to {}".format(args.logdir))
-
+    json.dump(config, open("config.json", "w+"))
     preproc_data_path = os.path.join(args.logdir, "data")
     logger.log(f"Overwriting preproc save_path with: {preproc_data_path}")
     config['model']['preproc']['save_path'] = preproc_data_path
