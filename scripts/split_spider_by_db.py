@@ -13,7 +13,7 @@ def write_libsonnet(split_name, list : List) -> None:
         wr.write(strings("local databases = ["))
         wr.write(strings(s = "local databases = [", tab = '   '))
         for l in list:
-            wr.write(strings(s = "'" + str(l) +"''", tab='    '))
+            wr.write(strings(s = "'" + str(l) +"'", tab='    '))
         wr.write(strings(s = "]", tab="  "))
         wr.write(strings(s = "name: 'text2sqlvi',", tab="  "))
         wr.write(strings(s = "paths: [", tab=" "))
