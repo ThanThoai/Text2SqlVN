@@ -8,7 +8,7 @@ function(output_from, data_path='data/', save_dir='duorat/') {
     },
 
     model: {
-        name: 'RATSQL',
+        name: 'DuoRAT',
         encoder: {
             initial_encoder: {
                 name: 'Transformer',

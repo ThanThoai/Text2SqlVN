@@ -9,10 +9,10 @@
         "bert_factor": 167
     },
     model+: {
-        name: 'TextToSQL',
+        name: 'DuoRAT',
         encoder: {
             initial_encoder: {
-                name: 'phoBert',
+                name: 'Bert',
                 pretrained_model_name_or_path: 'phobert-base',
                 trainable: true,
                 num_return_layers: 1,
@@ -49,7 +49,7 @@
         },
         preproc+: {
             save_path: 'data/result_phobert',
-            name: 'phoBertRat',
+            name: 'BertDuoRAT',
             pretrained_model_name_or_path: 'phobert-base',
             add_cls_token: true,
             add_sep_token: false,
