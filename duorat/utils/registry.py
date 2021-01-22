@@ -45,6 +45,7 @@ def register(kind, name):
 def lookup(kind, name):
     if isinstance(name, collections.abc.Mapping):
         name = name["name"]
+    print(_REGISTRY)
 
     if kind not in _REGISTRY:
         raise KeyError('Nothing registered under "{}"'.format(kind))
