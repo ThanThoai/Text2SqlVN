@@ -3,3 +3,4 @@ jsonnet
 stanza
 pydantic
 vncorenlp
+asdl
