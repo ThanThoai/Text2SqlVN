@@ -58,6 +58,7 @@ def construct(kind, config, unused_keys=(), **kwargs):
 
 def instantiate(callable, config, unused_keys=(), **kwargs):
     merged = {**config, **kwargs}
+    print(merged)
     signature = inspect.signature(callable)
     for name, param in signature.parameters.items():
         print(name, param.kind)
