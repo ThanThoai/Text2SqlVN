@@ -64,6 +64,7 @@ def instantiate(callable, config, unused_keys=(), **kwargs):
     print("-----")
     signature = inspect.signature(callable)
     dict_signature = {name : param for name, param in  signature.parameters.items()}
+    print(dict_signature)
     # for name, param in signature.parameters.items():
     #     if param.kind in (
     #         inspect.Parameter.POSITIONAL_ONLY,
