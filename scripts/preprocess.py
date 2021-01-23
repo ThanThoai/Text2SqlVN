@@ -21,7 +21,7 @@ from duorat.utils import registry
 class Preprocessor:
     def __init__(self, config):
         self.config = config
-        print(config)
+        # print(config)
         self.model_preproc = registry.construct(
             "preproc", self.config["model"]["preproc"],
         )

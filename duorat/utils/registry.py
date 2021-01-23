@@ -59,29 +59,29 @@ def construct(kind, config, unused_keys=(), **kwargs):
 
 def instantiate(callable, config, unused_keys=(), **kwargs):
     merged = {**config, **kwargs}
-    print("-----")
-    print(merged)
-    print("-----")
+    # print("-----")
+    # print(merged)
+    # print("-----")
     signature = inspect.signature(callable)
-    dict_signature = {name : param for name, param in  signature.parameters.items()}
-    print(dict_signature)
-    # for name, param in signature.parameters.items():
-    #     if param.kind in (
-    #         inspect.Parameter.POSITIONAL_ONLY,
-    #         inspect.Parameter.VAR_POSITIONAL,
-    #     ):
-            # raise ValueError(
-            #     "Unsupported kind for param {}: {}".format(name, param.kind)
-            # )
-            # signature.parameters.remove(name)
-            # continue
-    for name, param in dict_signature.items():
+    # dict_signature = {name : param for name, param in  signature.parameters.items()}
+    # print(dict_signature)
+    for name, param in signature.parameters.items():
         if param.kind in (
             inspect.Parameter.POSITIONAL_ONLY,
             inspect.Parameter.VAR_POSITIONAL,
-            ):
-            dict_signature.pop(name)
-    print(dict_signature)
+        ):
+            raise ValueError(
+                "Unsupported kind for param {}: {}".format(name, param.kind)
+            )
+            # signature.parameters.remove(name)
+            # continue
+    # for name, param in dict_signature.items():
+    #     if param.kind in (
+    #         inspect.Parameter.POSITIONAL_ONLY,
+    #         inspect.Parameter.VAR_POSITIONAL,
+    #         ):
+    #         dict_signature.pop(name)
+    # print(dict_signature)
     # signature = types.MappingProxyType((name, param) for name, param in dict_signature.items())
 
     if any(

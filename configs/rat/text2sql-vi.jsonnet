@@ -63,7 +63,7 @@
             },
         },
     },
-    "train": {
+    train+: {
         "amp_enabled": true,
         "batch_size": 17,
         "n_grad_accumulation_steps": 7,
