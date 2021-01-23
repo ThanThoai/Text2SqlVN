@@ -48,7 +48,7 @@
             "rat_relu_dropout": 0.1
         },
         preproc+: {
-            save_path: 'data/result_phobert',
+            save_path: 'data/duorat-bert-base',
             name: 'BertDuoRAT',
             pretrained_model_name_or_path: 'vinai/phobert-base',
             add_cls_token: true,
