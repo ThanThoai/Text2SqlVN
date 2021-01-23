@@ -29,6 +29,7 @@ class Preprocessor:
     def preprocess(self, sections, keep_vocab):
         self.model_preproc.clear_items()
         for section in sections:
+            print(section)
             data = registry.construct("dataset", self.config["data"][section])
             for item in tqdm.tqdm(data, desc=section, dynamic_ncols=True):
                 to_add, validation_info = self.model_preproc.validate_item(

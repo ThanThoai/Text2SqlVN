@@ -71,7 +71,8 @@ def instantiate(callable, config, unused_keys=(), **kwargs):
             # raise ValueError(
             #     "Unsupported kind for param {}: {}".format(name, param.kind)
             # )
-            signature.parameters.remove(name)
+            # signature.parameters.remove(name)
+            continue
 
     if any(
         param.kind == inspect.Parameter.VAR_KEYWORD

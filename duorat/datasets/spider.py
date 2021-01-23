@@ -23,8 +23,6 @@
 import sys
 import os
 sys.path.insert(1, os.getcwd())
-
-import os
 import dataclasses
 import json
 from typing import Optional, Tuple, List, Iterable
