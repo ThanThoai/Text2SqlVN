@@ -58,6 +58,8 @@ def construct(kind, config, unused_keys=(), **kwargs):
 
 
 def instantiate(callable, config, unused_keys=(), **kwargs):
+    print(callable)
+    print(type(callable))
     merged = {**config, **kwargs}
     print("-----")
     print(merged)
