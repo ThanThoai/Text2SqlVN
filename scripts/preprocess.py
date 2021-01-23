@@ -22,12 +22,7 @@ class Preprocessor:
     def __init__(self, config):
         self.config = config
         # print(config)
-        # self.model_preproc = registry.construct(
-        #     "preproc", self.config["model"]["preproc"],
-        # )
-        self.model_preproc = registry.instantiate(
-            registry.lookup('model', config['model'])['preproc'],
-            config['model'])
+        self.model_preproc = registry.construct("preproc", self.config["model"]["preproc"])
 
     def preprocess(self, sections, keep_vocab):
         self.model_preproc.clear_items()
