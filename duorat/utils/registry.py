@@ -25,6 +25,7 @@ import collections
 import collections.abc
 import inspect
 import sys
+import types
 
 
 _REGISTRY = collections.defaultdict(dict)
@@ -62,17 +63,24 @@ def instantiate(callable, config, unused_keys=(), **kwargs):
     print(merged)
     print("-----")
     signature = inspect.signature(callable)
-    print(signature)
-    for name, param in signature.parameters.items():
-        if param.kind in (
-            inspect.Parameter.POSITIONAL_ONLY,
-            inspect.Parameter.VAR_POSITIONAL,
-        ):
+    dict_signature = dict(signature)
+    # for name, param in signature.parameters.items():
+    #     if param.kind in (
+    #         inspect.Parameter.POSITIONAL_ONLY,
+    #         inspect.Parameter.VAR_POSITIONAL,
+    #     ):
             # raise ValueError(
             #     "Unsupported kind for param {}: {}".format(name, param.kind)
             # )
             # signature.parameters.remove(name)
-            continue
+            # continue
+    for name, param in dict_signature.items():
+        if param.kind in (
+            inspect.Parameter.POSITIONAL_ONLY,
+            inspect.Parameter.VAR_POSITIONAL,
+            ):
+            dict_signature.pop(name)
+    signature = types.MappingProxyType(dict_signature)
 
     if any(
         param.kind == inspect.Parameter.VAR_KEYWORD
