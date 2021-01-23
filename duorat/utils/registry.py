@@ -80,7 +80,7 @@ def instantiate(callable, config, unused_keys=(), **kwargs):
             inspect.Parameter.VAR_POSITIONAL,
             ):
             dict_signature.pop(name)
-    signature = types.MappingProxyType(dict_signature)
+    signature = types.MappingProxyType((name, param) for name, param in dict_signature.items())
 
     if any(
         param.kind == inspect.Parameter.VAR_KEYWORD
