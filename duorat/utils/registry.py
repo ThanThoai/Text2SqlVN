@@ -58,8 +58,6 @@ def construct(kind, config, unused_keys=(), **kwargs):
 
 
 def instantiate(callable, config, unused_keys=(), **kwargs):
-    print(callable)
-    print(type(callable))
     merged = {**config, **kwargs}
     print("-----")
     print(merged)
@@ -82,7 +80,8 @@ def instantiate(callable, config, unused_keys=(), **kwargs):
             inspect.Parameter.VAR_POSITIONAL,
             ):
             dict_signature.pop(name)
-    signature = types.MappingProxyType((name, param) for name, param in dict_signature.items())
+    print(dict_signature)
+    # signature = types.MappingProxyType((name, param) for name, param in dict_signature.items())
 
     if any(
         param.kind == inspect.Parameter.VAR_KEYWORD
