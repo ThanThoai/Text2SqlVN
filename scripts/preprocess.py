@@ -26,7 +26,7 @@ class Preprocessor:
         #     "preproc", self.config["model"]["preproc"],
         # )
         self.model_preproc = registry.instantiate(
-            registry.lookup('model', config['model']).Preproc,
+            registry.lookup('model', config['model'])['preproc'],
             config['model'])
 
     def preprocess(self, sections, keep_vocab):
