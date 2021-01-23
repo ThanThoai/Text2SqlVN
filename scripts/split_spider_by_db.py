@@ -14,8 +14,8 @@ def write_libsonnet(split_name, list : List) -> None:
         wr.write(strings(s = "local databases = [", tab = '   '))
         for l in list:
             wr.write(strings(s = "'" + str(l) +"',", tab='    '))
-        wr.write(strings(s = "]", tab="  "))
-        wr.write(strings(s = "name: 'text2sqlvi',", tab="  "))
+        wr.write(strings(s = "],", tab="  "))
+        wr.write(strings(s = "name: 'spider',", tab="  "))
         wr.write(strings(s = "paths: [", tab=" "))
         wr.write(strings(s = "prefix + 'database/%s/examples.json' % [db]", tab="  "))
         wr.write(strings(s = "for db in databases", tab="  "))
